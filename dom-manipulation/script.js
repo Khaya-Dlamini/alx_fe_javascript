@@ -13,11 +13,11 @@ function showRandomQuote() {
 }
 
 function addQuote() {
-    const quoteText = document.getElementById('newQuoteText').value;
-    const quoteCategory = document.getElementById('newQuoteCategory').value;
+    const createElement = document.getElementById('newQuoteText').value;
+    const appendChild = document.getElementById('newQuoteCategory').value;
     
-    if (quoteText && quoteCategory) {
-        const createAddQuoteForm = { text: quoteText, category: quoteCategory };
+    if (createElement && appendChild) {
+        const createAddQuoteForm = { text: createElement, category: appendChild };
         quotes.push(createAddQuoteForm);
         showRandomQuote(); 
         clearFormInputs();
