@@ -17,8 +17,8 @@ function addQuote() {
     const quoteCategory = document.getElementById('newQuoteCategory').value;
     
     if (quoteText && quoteCategory) {
-        const newQuote = { text: quoteText, category: quoteCategory };
-        quotes.push(newQuote);
+        const createAddQuoteForm = { text: quoteText, category: quoteCategory };
+        quotes.push(createAddQuoteForm);
         showRandomQuote(); 
         clearFormInputs();
     } else {
