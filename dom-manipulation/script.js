@@ -104,7 +104,7 @@ async function addQuote() {
         
         // Post the new quote to the server
         await postQuoteToServer(newQuote);
-        displayNotification('New quote added and synced with the server.');
+        displayNotification('Quotes synced with server! new ones added');
     } else {
         alert('Please fill out both fields.');
     }
