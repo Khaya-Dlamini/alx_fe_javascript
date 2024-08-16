@@ -43,11 +43,11 @@ async function postQuoteToServer(quote) {
 
 // Function to periodically fetch quotes and sync with local storage
 async function syncWithServer() {
-    const serverQuotes = await fetchQuotesFromServer();
+    const syncQuotes = await fetchQuotesFromServer();
     
     const localQuotes = JSON.parse(localStorage.getItem('quotes')) || [];
     
-    const mergedQuotes = resolveConflicts(localQuotes, serverQuotes);
+    const mergedQuotes = resolveConflicts(localQuotes, syncQuotes);
     localStorage.setItem('quotes', JSON.stringify(mergedQuotes));
     
     displayNotification('Quotes have been synced with the server.');
@@ -55,12 +55,12 @@ async function syncWithServer() {
 }
 
 // Function to resolve conflicts between local and server data
-function resolveConflicts(localQuotes, serverQuotes) {
+function resolveConflicts(localQuotes, syncQuotes) {
     // Here, server data takes precedence
-    const serverTexts = serverQuotes.map(quote => quote.text);
+    const serverTexts = syncQuotes.map(quote => quote.text);
 
     const mergedQuotes = localQuotes.filter(quote => !serverTexts.includes(quote.text))
-                                     .concat(serverQuotes);
+                                     .concat(syncQuotes);
 
     return mergedQuotes;
 }
